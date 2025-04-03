@@ -18,19 +18,24 @@ const Projects: React.FC = () => {
       title: "Event Management System",
       description:
         "A comprehensive web application for managing events, user roles, and invitations. Features include user management, event scheduling, invitation tracking, and administrative controls.",
-      technologies: ["React", "Vite", "Material UI", "JavaScript"],
-      githubUrl: "YOUR_GITHUB_URL_HERE", // TODO: Replace with actual GitHub URL
+      technologies: [
+        "React",
+        "Vite",
+        "Material UI (MUI) ",
+        "JavaScript (ES6+) ",
+      ],
+      githubUrl: "https://github.com/AlexBuildsLTS/ReserveFrontend-main",
       imageUrl: NewUiImage,
-      liveUrl: "YOUR_LIVE_URL_HERE", // TODO: Replace with actual image path
+      liveUrl: "https://sigma-e38fa.web.app/",
     },
     {
       title: "E-Commerce Car Platform",
       description:
         "Modern e-commerce platform with product management, shopping cart, and secure checkout functionality.",
       technologies: ["TypeScript", "React", "Vite", "Tailwind CSS"],
-      githubUrl: "YOUR_GITHUB_URL_HERE", // TODO: Replace with actual GitHub URL
+      githubUrl: "https://github.com/AlexBuildsLTS/ReserveFrontend-main",
       imageUrl: EcommerceCarImage,
-      liveUrl: "YOUR_LIVE_URL_HERE", // TODO: Replace with actual live URL
+      liveUrl: "https://sigma-e38fa.web.app/",
     },
     // Add more projects as needed
   ];
