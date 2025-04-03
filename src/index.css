@@ -1,0 +1,47 @@
+/* src/index.css */
+
+/* Import Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Layer for Global Styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans bg-navy-primary text-slate;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    /* stylelint-disable-next-line at-rule-no-unknown */
+    @apply text-slate-lightest;
+  }
+
+  a {
+    @apply text-green;
+  }
+
+  /* Dark Mode */
+  html.dark body {
+    /* CORRECTED */
+    @apply bg-white text-navy-primary;
+  }
+
+  html.dark h1,
+  html.dark h2,
+  html.dark h3,
+  html.dark h4,
+  html.dark h5,
+  html.dark h6 {
+    /* CORRECTED */
+    @apply text-navy-primary;
+  }
+}
