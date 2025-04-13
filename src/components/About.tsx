@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 import * as Icons from 'lucide-react';
 import React from 'react';
 import neoFetchImage from '../assets/neo-fetch.png';
+=======
+import * as Icons from "lucide-react";
+import React from "react";
+import neoFetchImage from "../assets/neo-fetch.png";
+>>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
 
 const About = () => {
   return (

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import EditMeetingModal from './EditMeetingModal';
 import { Meeting } from '../types/Meeting';
@@ -11,12 +12,31 @@ const MeetingCalendar: React.FC = () => {
   const [participants, setParticipants] = useState<string[]>(['']);
   const [description, setDescription] = useState<string>('');
   const [error, setError] = useState<string>('');
+=======
+import React, {useEffect, useState} from "react";
+import EditMeetingModal from "./EditMeetingModal";
+import {Meeting} from "../types/Meeting";
+
+const MeetingCalendar: React.FC = () => {
+  const [meetings, setMeetings] = useState<Meeting[]>([]);
+  const [title, setTitle] = useState<string>("");
+  const [date, setDate] = useState<string>("");
+  const [time, setTime] = useState<string>("");
+  const [level, setLevel] = useState<string>("Team");
+  const [participants, setParticipants] = useState<string[]>([""]);
+  const [description, setDescription] = useState<string>("");
+  const [error, setError] = useState<string>("");
+>>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
   const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
   const [currentMeeting, setCurrentMeeting] = useState<Meeting | null>(null);
 
   // Load meetings from localStorage on component mount
   useEffect(() => {
+<<<<<<< HEAD
     const storedMeetings = localStorage.getItem('meetings');
+=======
+    const storedMeetings = localStorage.getItem("meetings");
+>>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
     if (storedMeetings) {
       setMeetings(JSON.parse(storedMeetings));
     }
@@ -24,7 +44,11 @@ const MeetingCalendar: React.FC = () => {
 
   // Save meetings to localStorage whenever meetings state changes
   useEffect(() => {
+<<<<<<< HEAD
     localStorage.setItem('meetings', JSON.stringify(meetings));
+=======
+    localStorage.setItem("meetings", JSON.stringify(meetings));
+>>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
   }, [meetings]);
 
   const validateEmails = (emails: string[]): boolean => {
@@ -35,9 +59,15 @@ const MeetingCalendar: React.FC = () => {
   const addMeeting = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+<<<<<<< HEAD
     const loggedInUserEmail = localStorage.getItem('loggedInUserEmail');
     if (!loggedInUserEmail) {
       setError('You must be logged in to create a meeting.');
+=======
+    const loggedInUserEmail = localStorage.getItem("loggedInUserEmail");
+    if (!loggedInUserEmail) {
+      setError("You must be logged in to create a meeting.");
+>>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
       return;
     }
 
@@ -50,6 +80,7 @@ const MeetingCalendar: React.FC = () => {
     const trimmedDescription = description.trim();
 
     // Validation
+<<<<<<< HEAD
     if (
       !trimmedTitle ||
       !trimmedDate ||
@@ -66,10 +97,20 @@ const MeetingCalendar: React.FC = () => {
       trimmedParticipants.some((email) => email === '')
     ) {
       setError('Please provide at least one participant email.');
+=======
+    if (!trimmedTitle || !trimmedDate || !trimmedTime || !trimmedLevel || !trimmedDescription) {
+      setError("Please fill in all required fields.");
+      return;
+    }
+
+    if (trimmedParticipants.length === 0 || trimmedParticipants.some((email) => email === "")) {
+      setError("Please provide at least one participant email.");
+>>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
       return;
     }
 
     if (!validateEmails(trimmedParticipants)) {
+<<<<<<< HEAD
       setError('Please enter valid email addresses.');
       return;
     }
@@ -81,6 +122,14 @@ const MeetingCalendar: React.FC = () => {
       )
     ) {
       setError('A meeting is already scheduled at this date and time.');
+=======
+      setError("Please enter valid email addresses.");
+      return;
+    }
+
+    if (meetings.some((meeting) => meeting.date === trimmedDate && meeting.time === trimmedTime)) {
+      setError("A meeting is already scheduled at this date and time.");
+>>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
       return;
     }
 
@@ -96,6 +145,7 @@ const MeetingCalendar: React.FC = () => {
     };
 
     setMeetings([...meetings, newMeeting]);
+<<<<<<< HEAD
     setTitle('');
     setDate('');
     setTime('');
@@ -113,11 +163,32 @@ const MeetingCalendar: React.FC = () => {
 
     if (!meetingToDelete) {
       setError('Meeting not found.');
+=======
+    setTitle("");
+    setDate("");
+    setTime("");
+    setLevel("Team");
+    setParticipants([""]);
+    setDescription("");
+    setError("");
+  };
+
+  const deleteMeeting = (idToDelete: number) => {
+    const loggedInUserEmail = localStorage.getItem("loggedInUserEmail");
+    const meetingToDelete = meetings.find((meeting) => meeting.id === idToDelete);
+
+    if (!meetingToDelete) {
+      setError("Meeting not found.");
+>>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
       return;
     }
 
     if (meetingToDelete.creatorEmail !== loggedInUserEmail) {
+<<<<<<< HEAD
       setError('You can only delete meetings you created.');
+=======
+      setError("You can only delete meetings you created.");
+>>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
       return;
     }
 
@@ -136,6 +207,7 @@ const MeetingCalendar: React.FC = () => {
 
   const saveEditedMeeting = (updatedMeeting: Meeting) => {
     setMeetings(
+<<<<<<< HEAD
       meetings.map((meeting) =>
         meeting.id === updatedMeeting.id ? updatedMeeting : meeting
       )
@@ -247,6 +319,114 @@ const MeetingCalendar: React.FC = () => {
         />
       )}
     </section>
+=======
+        meetings.map((meeting) => (meeting.id === updatedMeeting.id ? updatedMeeting : meeting))
+    );
+    setError("");
+  };
+
+  return (
+      <section id="meeting-calendar" className="py-24">
+        <h2 className="section-heading">Meeting Calendar</h2>
+        <div className="max-w-4xl p-6 mx-auto rounded-lg shadow-lg bg-navy-light">
+          {/* Add Meeting Form */}
+          <form onSubmit={addMeeting} className="flex flex-col gap-4">
+            {error && <div className="text-sm text-red-500">{error}</div>}
+            <div className="flex flex-col">
+              <label htmlFor="title" className="block mb-1 text-slate-lightest">
+                Meeting Title<span className="text-red-500">*</span>
+              </label>
+              <input
+                  id="title"
+                  type="text"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="Enter meeting title"
+                  className="p-2 border rounded border-slate focus:outline-none focus:border-green"
+                  required
+              />
+            </div>
+            {/* Remaining input fields... */}
+          </form>
+
+          {/* Scheduled Meetings */}
+          <h3 className="mt-12 mb-4 text-xl font-semibold text-green">Scheduled Meetings</h3>
+          {meetings.length === 0 ? (
+              <p className="text-slate">No meetings scheduled.</p>
+          ) : (
+              <div className="overflow-x-auto">
+                <table className="min-w-full rounded-lg shadow bg-slate-lightest">
+                  <thead>
+                  <tr>
+                    <th className="px-6 py-3 text-xs font-medium tracking-wider text-left uppercase text-slate-lightest">
+                      Title
+                    </th>
+                    <th className="px-6 py-3 text-xs font-medium tracking-wider text-left uppercase text-slate-lightest">
+                      Date
+                    </th>
+                    <th className="px-6 py-3 text-xs font-medium tracking-wider text-left uppercase text-slate-lightest">
+                      Time
+                    </th>
+                    <th className="px-6 py-3 text-xs font-medium tracking-wider text-left uppercase text-slate-lightest">
+                      Level
+                    </th>
+                    <th className="px-6 py-3 text-xs font-medium tracking-wider text-center uppercase text-slate-lightest">
+                      Actions
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {meetings.map((meeting) => (
+                      <tr key={meeting.id} className="border-t">
+                        <td className="px-6 py-4 text-sm whitespace-nowrap text-slate">
+                          {meeting.title}
+                        </td>
+                        <td className="px-6 py-4 text-sm whitespace-nowrap text-slate">
+                          {meeting.date}
+                        </td>
+                        <td className="px-6 py-4 text-sm whitespace-nowrap text-slate">
+                          {meeting.time}
+                        </td>
+                        <td className="px-6 py-4 text-sm whitespace-nowrap text-slate">
+                          {meeting.level}
+                        </td>
+                        <td className="px-6 py-4 text-sm text-center whitespace-nowrap">
+                          {meeting.creatorEmail === localStorage.getItem("loggedInUserEmail") && (
+                              <div className="flex justify-center space-x-2">
+                                <button
+                                    onClick={() => openEditModal(meeting)}
+                                    className="text-blue-500 hover:text-blue-700"
+                                >
+                                  Edit
+                                </button>
+                                <button
+                                    onClick={() => deleteMeeting(meeting.id)}
+                                    className="text-red-500 hover:text-red-700"
+                                >
+                                  Delete
+                                </button>
+                              </div>
+                          )}
+                        </td>
+                      </tr>
+                  ))}
+                  </tbody>
+                </table>
+              </div>
+          )}
+        </div>
+
+        {/* Edit Meeting Modal */}
+        {currentMeeting && (
+            <EditMeetingModal
+                meeting={currentMeeting}
+                isOpen={isEditModalOpen}
+                onClose={closeEditModal}
+                onSave={saveEditedMeeting}
+            />
+        )}
+      </section>
+>>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
   );
 };
 
