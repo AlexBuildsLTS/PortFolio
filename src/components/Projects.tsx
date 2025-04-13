@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 import React from 'react';
 import { Github, ExternalLink } from 'lucide-react';
 import EcommerceCarImage from '../assets/ecommerce-car.png';
 import NewUiImage from '../assets/New-Ui.png';
-=======
-import React from "react";
-import { Github, ExternalLink } from "lucide-react";
-import EcommerceCarImage from "../assets/ecommerce-car.png";
-import NewUiImage from "../assets/New-Ui.png";
->>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
 
 interface Project {
   title: string;
@@ -22,7 +15,6 @@ interface Project {
 const Projects: React.FC = () => {
   const projects: Project[] = [
     {
-<<<<<<< HEAD
       title: 'Event Management System',
       description:
         'A comprehensive web application for managing events, user roles, and invitations. Features include user management, event scheduling, invitation tracking, and administrative controls.',
@@ -44,29 +36,6 @@ const Projects: React.FC = () => {
       githubUrl: 'https://github.com/AlexBuildsLTS/ReserveFrontend-main',
       imageUrl: EcommerceCarImage,
       liveUrl: 'https://sigma-e38fa.web.app/',
-=======
-      title: "Event Management System",
-      description:
-        "A comprehensive web application for managing events, user roles, and invitations. Features include user management, event scheduling, invitation tracking, and administrative controls.",
-      technologies: [
-        "React",
-        "Vite",
-        "Material UI (MUI) ",
-        "JavaScript (ES6+) ",
-      ],
-      githubUrl: "https://github.com/AlexBuildsLTS/ReserveFrontend-main",
-      imageUrl: NewUiImage,
-      liveUrl: "https://sigma-e38fa.web.app/",
-    },
-    {
-      title: "E-Commerce Car Platform",
-      description:
-        "Modern e-commerce platform with product management, shopping cart, and secure checkout functionality.",
-      technologies: ["TypeScript", "React", "Vite", "Tailwind CSS"],
-      githubUrl: "https://github.com/AlexBuildsLTS/ReserveFrontend-main",
-      imageUrl: EcommerceCarImage,
-      liveUrl: "https://sigma-e38fa.web.app/",
->>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
     },
     // Add more projects as needed
   ];

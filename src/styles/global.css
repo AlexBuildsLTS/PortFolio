@@ -1,13 +1,7 @@
-<<<<<<< HEAD
-=======
-/* stylelint-disable */
-/* src/styles/global.css */
->>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-<<<<<<< HEAD
 :root {
   --navy-primary: #0a192f;
   --navy-light: #112240;
@@ -20,32 +14,12 @@
   --white: #ffffff;
 }
 
-=======
-/* src/styles/global.css (or where you define variables) */
-
-:root {
-  /* Dark theme variables (MOVE TO :root) */
-  --bg-light: #0a192f;
-  --text-light: #ccd6f6;
-  --accent-light: #64ffda;
-}
-
-/* html.dark {  REMOVE THIS ENTIRE BLOCK */
-/* /* Dark theme variable overrides */
-/* --bg-light: var(--bg-dark); */
-/* --text-light: var(--text-dark); */
-/* --accent-light: var(--accent-dark); */
-/* } */
-
-/* Custom Base Styles */
->>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
 @layer base {
   html {
     scroll-behavior: smooth;
   }
 
   body {
-<<<<<<< HEAD
     @apply font-sans bg-white text-slate-700 transition-colors duration-300;
   }
 
@@ -75,70 +49,10 @@
   .skill-bar {
     @apply h-2 overflow-hidden rounded-full;
     @apply bg-gray-200 dark:bg-navy-light;
-=======
-    @apply font-sans;
-    background-color: var(--bg-light);
-    color: var(--text-light);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: var(--text-light);
-  }
-
-  a {
-    color: var(--accent-light);
-  }
-}
-
-/* Custom Components */
-@layer components {
-  /* Navigation Links */
-  .nav-link {
-    @apply transition-colors duration-300;
-    color: var(--text-light);
-  }
-
-  .nav-link:hover {
-    color: var(--accent-light);
-  }
-
-  /* Primary Button */
-  .btn-primary {
-    @apply px-4 py-2 transition-all duration-300 bg-transparent border rounded;
-    border-color: var(--accent-light);
-    color: var(--accent-light);
-  }
-
-  .btn-primary:hover {
-    background-color: var(--accent-light);
-    background-opacity: 0.1;
-  }
-
-  /* Section Heading */
-  .section-heading {
-    @apply text-2xl md:text-3xl font-bold mb-8 flex items-center gap-4 after:content-[''] after:flex-1 after:h-[1px];
-    color: var(--text-light);
-  }
-
-  .section-heading::after {
-    background-color: var(--accent-light);
-  }
-
-  /* Skill Bar for Projects/Skills */
-  .skill-bar {
-    @apply h-2 overflow-hidden rounded-full;
-    background-color: var(--bg-light);
->>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
   }
 
   .skill-progress {
     @apply h-full transition-all duration-1000;
-<<<<<<< HEAD
     @apply bg-royal dark:bg-green;
   }
 }
@@ -167,14 +81,3 @@
     transform: translateY(0);
   }
 }
-=======
-    background-color: var(--accent-light);
-  }
-
-  /* Vertical Text (e.g., Email) */
-  .vertical-text {
-    @apply [writing-mode:vertical-rl] tracking-widest;
-    color: var(--text-light);
-  }
-}
->>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b

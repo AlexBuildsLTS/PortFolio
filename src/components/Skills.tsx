@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CheckCircle } from 'lucide-react';
-=======
-import React, { useEffect, useState } from "react";
-import { CheckCircle } from "lucide-react";
->>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
 
 interface Skill {
   name: string;
@@ -18,7 +13,6 @@ export default function Skills() {
 
   const skills: Skill[] = [
     // Languages
-<<<<<<< HEAD
     { name: 'Java', level: 90, category: 'Languages', certified: true },
     { name: 'JavaScript', level: 80, category: 'Languages', certified: true },
     { name: 'TypeScript', level: 70, category: 'Languages', certified: true },
@@ -50,39 +44,6 @@ export default function Skills() {
       name: 'Artificial Intelligence',
       level: 65,
       category: 'AI & Development',
-=======
-    { name: "Java", level: 90, category: "Languages", certified: true },
-    { name: "JavaScript", level: 80, category: "Languages", certified: true },
-    { name: "TypeScript", level: 70, category: "Languages", certified: true },
-    { name: "Kotlin", level: 65, category: "Languages", certified: true },
-
-    // Backend
-    { name: "Spring Boot", level: 85, category: "Backend", certified: true },
-    { name: "Node.js", level: 75, category: "Backend", certified: true },
-    { name: "PostgreSQL", level: 80, category: "Backend", certified: true },
-    { name: "MySQL", level: 75, category: "Backend", certified: true },
-    { name: "Prisma ORM", level: 70, category: "Backend", certified: true },
-
-    // Frontend
-    { name: "React", level: 85, category: "Frontend", certified: true },
-    { name: "React Native", level: 70, category: "Frontend", certified: true },
-    { name: "HTML/CSS", level: 80, category: "Frontend", certified: true },
-
-    // Tools & Technologies
-    { name: "Git", level: 85, category: "Tools", certified: true },
-    { name: "VMware", level: 90, category: "Tools" },
-    { name: "Oracle VM", level: 85, category: "Tools" },
-
-    // Operating Systems
-    { name: "Ubuntu", level: 85, category: "Operating Systems" },
-    { name: "Kubuntu", level: 80, category: "Operating Systems" },
-
-    // AI & Development
-    {
-      name: "Artificial Intelligence",
-      level: 65,
-      category: "AI & Development",
->>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
     },
   ];
 
@@ -97,11 +58,7 @@ export default function Skills() {
       { threshold: 0.1 }
     );
 
-<<<<<<< HEAD
     const element = document.getElementById('skills-section');
-=======
-    const element = document.getElementById("skills-section");
->>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
     if (element) observer.observe(element);
     return () => observer.disconnect();
   }, []);
@@ -139,11 +96,7 @@ export default function Skills() {
                     <div
                       className="h-full rounded-full transition-all duration-1000"
                       style={{
-<<<<<<< HEAD
                         width: isVisible ? `${skill.level}%` : '0%',
-=======
-                        width: isVisible ? `${skill.level}%` : "0%",
->>>>>>> 9af85ae396b67f543fcb2d1e65b76ce51e39a42b
                         backgroundColor: getSkillColor(skill.level),
                       }}
                     />
