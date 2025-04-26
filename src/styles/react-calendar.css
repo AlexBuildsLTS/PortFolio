@@ -1,0 +1,23 @@
+/* src/styles/react-calendar.css */
+
+/* Override default react-calendar styles */
+.react-calendar {
+  border: none;
+  font-family: inherit;
+  background: var(--bg-light);
+  color: var(--text-light);
+}
+
+.react-calendar__tile {
+  padding: 1rem 0;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.react-calendar__tile--active,
+.react-calendar__tile--now,
+.react-calendar__tile:hover {
+  background: var(--accent-light);
+  color: var(--bg-light);
+}
