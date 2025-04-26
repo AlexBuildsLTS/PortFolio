@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import { Moon, Sun } from 'lucide-react';
 import React from 'react';
 
+=======
+import React from 'react';
+import { Moon, Sun } from 'lucide-react';
+>>>>>>> 74b7f6236ea99624ffccda761af2768e45c1944f
 import { useTheme } from '../contexts/ThemeContext';
 
 const ThemeToggle: React.FC = () => {

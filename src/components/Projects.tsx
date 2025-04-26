@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import { ExternalLink, Github } from 'lucide-react';
 import React from 'react';
 
+=======
+import React from 'react';
+import { Github, ExternalLink } from 'lucide-react';
+>>>>>>> 74b7f6236ea99624ffccda761af2768e45c1944f
 import EcommerceCarImage from '../assets/ecommerce-car.png';
 import NewUiImage from '../assets/New-Ui.png';
 

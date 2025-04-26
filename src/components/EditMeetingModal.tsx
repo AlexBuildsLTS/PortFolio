@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 74b7f6236ea99624ffccda761af2768e45c1944f
 import { useTheme } from '../contexts/ThemeContext';
 import { Meeting } from '../types/Meeting'; // Use imported Meeting interface
 

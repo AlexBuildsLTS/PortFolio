@@ -1,8 +1,14 @@
 import React from 'react';
+<<<<<<< HEAD
 
 import { useTheme } from '../contexts/ThemeContext';
 import Footer from './Footer';
 import Navbar from './Navbar';
+=======
+import Navbar from './Navbar';
+import Footer from './Footer';
+import { useTheme } from '../contexts/ThemeContext';
+>>>>>>> 74b7f6236ea99624ffccda761af2768e45c1944f
 
 // Define the interface for the Layout component's props
  interface LayoutProps {
