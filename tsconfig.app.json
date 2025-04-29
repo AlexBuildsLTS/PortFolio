@@ -1,5 +1,5 @@
 {
-  "compilerOptions": {
+ "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": [
@@ -22,7 +22,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["@types/handlebars"]
+    "types": ["handlebars"]
   },
   "include": [
     "src"

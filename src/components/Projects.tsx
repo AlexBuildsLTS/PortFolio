@@ -1,7 +1,8 @@
 import React from 'react';
 import { Github, ExternalLink } from 'lucide-react';
-import NorthMarket from '../assets/ecommerce-car.png';
+import NorthMarket from '../assets/NorthMarket.png';
 import NewUiImage from '../assets/New-Ui.png';
+import FinanceWebb from '../assets/FinanceWebb.png';
 
 interface Project {
   title: string;
@@ -36,6 +37,15 @@ const Projects: React.FC = () => {
       githubUrl: 'https://github.com/AlexBuildsLTS/Ecommerce',
       imageUrl: NorthMarket,
       liveUrl: 'https://northmarketx.web.app/',
+    },
+    {
+      title: 'Financial Management System',
+      description:
+        'Modern Financial Management System with user authentication, expense tracking, and financial insights.',
+      technologies: ['React', 'Vite', 'Material UI (MUI) ', 'JavaScript (ES6+), Node.js, Firebase, FireStore'],
+      githubUrl: 'https://github.com/AlexBuildsLTS/Finance-app',
+      imageUrl: FinanceWebb,
+      liveUrl: 'finance-webb.web.app',
     },
     // Add more projects as needed
   ];

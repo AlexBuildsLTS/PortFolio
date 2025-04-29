@@ -1,14 +1,5 @@
-<<<<<<< HEAD
-// src/components/About.tsx
-import * as Icons from 'lucide-react';
-
-import DiplomaPdf from '../assets/Diploma JAVA - Alex Youssef.pdf'; // Import the diploma PDF
-import neoFetchImage from '../assets/neo-fetch.png';
-import ResumePdf from '../assets/Resume.pdf';
-=======
 import * as Icons from 'lucide-react';
 import neoFetchImage from '../assets/neo-fetch.png';
->>>>>>> 74b7f6236ea99624ffccda761af2768e45c1944f
 
 const About = () => {
   return (
@@ -43,11 +34,7 @@ const About = () => {
           interest drives me to create secure and robust applications, ensuring
           the safety and integrity of user data.
         </p>
-<<<<<<< HEAD
-        {/* Updated Grid Section - Existing content */}
-=======
         {/* Updated Grid Section */}
->>>>>>> 74b7f6236ea99624ffccda761af2768e45c1944f
         <div className="grid grid-cols-2 gap-4 mt-8 md:grid-cols-3">
           <div className="flex items-center gap-3 text-green">
             <Icons.Code2 size={20} />
@@ -71,11 +58,7 @@ const About = () => {
           </div>
         </div>
 
-<<<<<<< HEAD
-        {/* Adjusted Image Section - Existing content */}
-=======
         {/* Adjusted Image Section */}
->>>>>>> 74b7f6236ea99624ffccda761af2768e45c1944f
         <div className="relative group mt-12">
           <div className="relative z-10">
             <img
@@ -85,38 +68,9 @@ const About = () => {
             />
           </div>
         </div>
-<<<<<<< HEAD
-
-        {/* Download Buttons Section - Added for CV and Diploma */}
-        <div className="flex justify-center gap-4 mt-8">
-            {/* Download CV Button - Assuming Resume is linked correctly */}
-             {/* Make sure the path '../assets/Resume' is correct for your CV file */}
-            <a
-                href={ResumePdf}
-                download="Alex_Youssef_CV" // Suggest a download file name
-                className="inline-block px-6 py-3 text-lg font-semibold text-white bg-green-600 rounded-md shadow hover:bg-green-700 transition-colors duration-300"
-            >
-                Download CV
-            </a>
-            {/* Academic Diploma Button - Linking to the imported PDF */}
-             {/* Use the imported DiplomaPdf variable in the href */}
-            <a
-                href={DiplomaPdf}
-                download="Academic_Diploma_Alex_Youssef" // Suggest a download file name
-                className="inline-block px-6 py-3 text-lg font-semibold text-white bg-blue-600 rounded-md shadow hover:bg-blue-700 transition-colors duration-300"
-            >
-                Academic Diploma
-            </a>
-        </div>
-=======
->>>>>>> 74b7f6236ea99624ffccda761af2768e45c1944f
       </div>
     </section>
   );
 };
 
-<<<<<<< HEAD
 export default About;
-=======
-export default About;
->>>>>>> 74b7f6236ea99624ffccda761af2768e45c1944f

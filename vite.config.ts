@@ -33,7 +33,13 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': resolve(__dirname, 'src'),
         },
+        // Explicitly define extensions to resolve
+        extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
       },
-      css: {},
+      // Optimize dependencies for faster dev server startup (optional, adjust based on project)
+      optimizeDeps: {
+        // include: ['react', 'react-dom'], // Add frequently used dependencies here
+      },
+      // Removed empty css: {} block
   };
 });

@@ -1,19 +1,9 @@
-<<<<<<< HEAD
-import { Calendar, Github, Linkedin, Menu, X } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
-import { Link as ScrollLink } from 'react-scroll';
-
-import profilePicture from '../assets/profilePicture.jpg';
-import ThemeToggle from './ThemeToggle';
-=======
 import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import { Github, Linkedin, Calendar, Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import profilePicture from '../assets/profilePicture.jpg';
->>>>>>> 74b7f6236ea99624ffccda761af2768e45c1944f
 
 const Navbar: React.FC = () => {
   const location = useLocation();

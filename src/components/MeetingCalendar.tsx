@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react';
-<<<<<<< HEAD
-
-import { Meeting } from '../types/Meeting';
-import EditMeetingModal from './EditMeetingModal';
-=======
 import EditMeetingModal from './EditMeetingModal';
 import { Meeting } from '../types/Meeting';
->>>>>>> 74b7f6236ea99624ffccda761af2768e45c1944f
 
 const MeetingCalendar: React.FC = () => {
   const [meetings, setMeetings] = useState<Meeting[]>([]);
