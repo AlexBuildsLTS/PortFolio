@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-import { ExternalLink, Github } from 'lucide-react';
-import React from 'react';
-
-=======
 import React from 'react';
 import { Github, ExternalLink } from 'lucide-react';
->>>>>>> 74b7f6236ea99624ffccda761af2768e45c1944f
-import EcommerceCarImage from '../assets/ecommerce-car.png';
+import NorthMarket from '../assets/ecommerce-car.png';
 import NewUiImage from '../assets/New-Ui.png';
 
 interface Project {
@@ -35,13 +29,13 @@ const Projects: React.FC = () => {
       liveUrl: 'https://sigma-e38fa.web.app/',
     },
     {
-      title: 'E-Commerce Car Platform',
+      title: 'E-Commerce NorthMarket',
       description:
         'Modern e-commerce platform with product management, shopping cart, and secure checkout functionality.',
-      technologies: ['TypeScript', 'React', 'Vite', 'Tailwind CSS'],
-      githubUrl: 'https://github.com/AlexBuildsLTS/ReserveFrontend-main',
-      imageUrl: EcommerceCarImage,
-      liveUrl: 'https://sigma-e38fa.web.app/',
+      technologies: ['React', 'Vite', 'Material UI (MUI) ', 'JavaScript (ES6+), Node.js, Firebase, FireStore'],
+      githubUrl: 'https://github.com/AlexBuildsLTS/Ecommerce',
+      imageUrl: NorthMarket,
+      liveUrl: 'https://northmarketx.web.app/',
     },
     // Add more projects as needed
   ];
