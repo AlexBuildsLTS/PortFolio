@@ -12,6 +12,8 @@ export default defineConfig(({ mode }) => {
   return {
       // Use VITE_BASE_PATH if set (good for Firebase hosting), defaults to '/'
       base: env.VITE_BASE_PATH || '/',
+      // Add this to include PDF files in build
+      assetsInclude: ['**/*.pdf'],
       plugins: [
         react({
           jsxRuntime: 'automatic',
@@ -36,10 +38,8 @@ export default defineConfig(({ mode }) => {
         // Explicitly define extensions to resolve
         extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
       },
-      // Optimize dependencies for faster dev server startup (optional, adjust based on project)
       optimizeDeps: {
         // include: ['react', 'react-dom'], // Add frequently used dependencies here
       },
-      // Removed empty css: {} block
   };
 });

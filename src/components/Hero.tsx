@@ -1,5 +1,8 @@
 
-export default function Hero() {
+import Alex_Youssef_Java_Certificate from "../assets/Alex_Youssef_Java_Certificate.pdf";
+import Resume from "../assets/Resume.pdf";
+export default function Hero()
+{
   return (
     <section className="flex items-center min-h-screen px-6 bg-navy-primary text-slate-lightest sm:px-12">
       <div className="max-w-4xl mx-auto animate-slide-up">
@@ -21,13 +24,13 @@ export default function Hero() {
         <a href="#projects" className="btn-primary">
           Check out my work
         </a>
-        <a href="/src/assets/Diploma%20JAVA%20-%20Alex%20Youssef.pdf" download="Alex_Youssef_Java_Certificate.pdf" className="btn-primary ml-4">
+        <a href={Alex_Youssef_Java_Certificate} download="Alex_Youssef_Java_Certificate.pdf" className="btn-primary ml-4">
           Java Fullstack-Certificate
         </a>
-        <a href="/src/assets/Resume.pdf" download="Alex_Youssef_Resume.pdf" className="btn-primary ml-4">
+        <a href={Resume} download="Alex_Youssef_Resume.pdf" className="btn-primary ml-4">
           CV
         </a>
       </div>
     </section>
   );
-}
+};
