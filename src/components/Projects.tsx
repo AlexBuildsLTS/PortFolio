@@ -3,6 +3,7 @@ import { Github, ExternalLink } from 'lucide-react';
 import NorthMarket from '../assets/NorthMarket.png';
 import NewUiImage from '../assets/New-Ui.png';
 import FinanceWebb from '../assets/FinanceWebb.png';
+import techMarket from '../assets/techMarket.png';
 
 interface Project {
   title: string;
@@ -47,7 +48,17 @@ const Projects: React.FC = () => {
       imageUrl: FinanceWebb,
       liveUrl: 'finance-webb.web.app',
     },
+    {
+      title: 'RangerTech',
+      description:
+        'Simple Tech website for buying and selling laptops',
+      technologies: ['JavaScript', 'HTML', 'CSS'],
+      githubUrl: 'https://github.com/AlexBuildsLTS/LaptopMarket-g51',
+      imageUrl: techMarket,
+      liveUrl: 'https://alexbuildslts.github.io/LaptopMarket-g51/',
+    },
     // Add more projects as needed
+
   ];
 
   return (
