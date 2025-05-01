@@ -21,6 +21,12 @@ export default function Hero() {
         <a href="#projects" className="btn-primary">
           Check out my work
         </a>
+        <a href="/src/assets/Diploma%20JAVA%20-%20Alex%20Youssef.pdf" download="Alex_Youssef_Java_Certificate.pdf" className="btn-primary ml-4">
+          Java Fullstack-Certificate
+        </a>
+        <a href="/src/assets/Resume.pdf" download="Alex_Youssef_Resume.pdf" className="btn-primary ml-4">
+          CV
+        </a>
       </div>
     </section>
   );

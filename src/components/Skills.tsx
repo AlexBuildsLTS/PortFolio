@@ -1,6 +1,5 @@
 // src/components/Skills.tsx
-import React, { useEffect, useState } from 'react'; // React is needed if using JSX without automatic runtime
-// Import Radar component and necessary Chart.js elements
+import { useEffect, useState } from 'react';
 import { Radar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -11,16 +10,11 @@ import {
   Tooltip,
   Legend,
   ChartOptions,
-  TooltipItem, // Import TooltipItem for typing callbacks
-  TooltipModel // Import TooltipModel for typing callbacks
+  TooltipItem
 } from 'chart.js';
-// Using CheckCircle import for the list below the chart
 import { CheckCircle } from 'lucide-react';
-// Using MUI Tooltip for the list below the chart
 import { Tooltip as MuiTooltip } from '@mui/material';
 
-
-// Register Chart.js components
 ChartJS.register(
   RadialLinearScale,
   PointElement,
@@ -30,31 +24,25 @@ ChartJS.register(
   Legend
 );
 
-// Interface for a single skill
 interface Skill {
   name: string;
-  level: number; // Proficiency level 0-100
-  certified?: boolean; // Flag for verified skills
+  level: number;
+  certified?: boolean;
 }
 
-// Interface for a category of skills
 interface SkillCategory {
   category: string;
   skills: Skill[];
 }
 
-// Define the categorized skills data
-// TODO: IMPORTANT: You MUST review and adjust 'level' values (0-100) based on your academic performance from the diploma.
-// Set 'certified: true' for skills verified by your diploma.
-// Add/remove/categorize skills as you wish them to appear on the chart and in the list.
 const categorizedSkills: SkillCategory[] = [
    {
     category: 'Programming Languages',
     skills: [
       { name: 'Java', level: 95, certified: true },
       { name: 'JavaScript', level: 88, certified: true },
-      { name: 'TypeScript', level: 75 }, // Example from your previous list
-      { name: 'Kotlin', level: 65 }, // Example
+      { name: 'TypeScript', level: 75 },
+      { name: 'Kotlin', level: 65 },
     ],
   },
   {
@@ -64,7 +52,7 @@ const categorizedSkills: SkillCategory[] = [
       { name: 'CSS', level: 80, certified: true },
       { name: 'Bootstrap', level: 75, certified: true },
       { name: 'React', level: 90, certified: true },
-      { name: 'React Native', level: 70 }, // Example
+      { name: 'React Native', level: 70 },
     ],
   },
   {
@@ -84,8 +72,8 @@ const categorizedSkills: SkillCategory[] = [
       { name: 'SQL and RDBMS', level: 85, certified: true },
       { name: 'MySQL', level: 80, certified: true },
       { name: 'H2', level: 78, certified: true },
-      { name: 'PostgreSQL', level: 85 }, // Example
-      { name: 'Prisma ORM', level: 70 }, // Example
+      { name: 'PostgreSQL', level: 85 },
+      { name: 'Prisma ORM', level: 70 },
     ],
   },
   {
@@ -96,15 +84,15 @@ const categorizedSkills: SkillCategory[] = [
       { name: 'Postman', level: 88, certified: true },
       { name: 'Git VCS', level: 92, certified: true },
       { name: 'Github', level: 94, certified: true },
-      { name: 'VMware', level: 90 }, // Example
-      { name: 'Oracle VM', level: 85 }, // Example
+      { name: 'VMware', level: 90 },
+      { name: 'Oracle VM', level: 85 },
     ],
   },
   {
-    category: 'Operating Systems', // Added from your previous list
+    category: 'Operating Systems',
     skills: [
-      { name: 'Ubuntu', level: 85 }, // Example
-      { name: 'Kubuntu', level: 80 }, // Example
+      { name: 'Ubuntu', level: 85 },
+      { name: 'Kubuntu', level: 80 },
     ],
   },
   {
@@ -117,106 +105,94 @@ const categorizedSkills: SkillCategory[] = [
     ],
   },
    {
-    category: 'AI & Development', // Added from your previous list
+    category: 'AI & Development',
     skills: [
-      { name: 'Artificial Intelligence', level: 65 }, // Example
-      { name: 'Unit Testing', level: 85 }, // Example
+      { name: 'Artificial Intelligence', level: 65 },
+      { name: 'Unit Testing', level: 85 },
     ],
   },
-  // Add any other categories and skills you want to display
 ];
 
-// Flatten the categorized skills for use in the radar chart data structure
 const allSkills: Skill[] = categorizedSkills.flatMap(cat => cat.skills);
 
-// Generate data for the Radar Chart
 const data = {
-  labels: allSkills.map(skill => skill.name), // Skill names as axes labels
+  labels: allSkills.map(skill => skill.name),
   datasets: [
     {
       label: 'My Proficiency',
-      data: allSkills.map(skill => skill.level), // Skill levels as data points
-      backgroundColor: 'rgba(34, 197, 94, 0.4)', // Example green with opacity (area color)
-      borderColor: 'rgba(34, 197, 94, 1)', // Example green (line color)
-      pointBackgroundColor: allSkills.map(skill => skill.certified ? 'orange' : 'rgba(34, 197, 94, 1)'), // Orange point for certified
+      data: allSkills.map(skill => skill.level),
+      backgroundColor: 'rgba(34, 197, 94, 0.4)',
+      borderColor: 'rgba(34, 197, 94, 1)',
+      pointBackgroundColor: allSkills.map(skill => skill.certified ? 'rgba(34, 197, 94, 1)' : 'rgba(34, 197, 94, 1)'),
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: allSkills.map(skill => skill.certified ? 'darkorange' : 'rgba(34, 197, 94, 1)'), // Darker orange hover for certified
+      pointHoverBorderColor: allSkills.map(skill => skill.certified ? 'rgba(16, 185, 84, 1)' : 'rgba(34, 197, 94, 1)'),
     },
   ],
 };
 
-// Radar Chart Options
 const options: ChartOptions<'radar'> = {
   responsive: true,
-  maintainAspectRatio: false, // Allow control over aspect ratio
+  maintainAspectRatio: false,
   scales: {
     r: {
       angleLines: {
-        color: '#444', // Darker lines for the web
+        color: '#444',
       },
       grid: {
-        color: '#444', // Darker grid lines for the web
+        color: '#444',
       },
       pointLabels: {
-        color: '#ccc', // Lighter text color for skill labels
+        color: '#ccc',
         font: {
             size: 12,
         },
-         // Customize point labels to highlight certified skills
-         callback: function(label: string | number) { // Type annotation
-             const skillName = label.toString(); // Ensure label is a string
+         callback: function(label: string | number) {
+             const skillName = label.toString();
              const skill = allSkills.find(s => s.name === skillName);
              if (skill?.certified) {
-                 // Prepend a checkmark to the label for certified skills
                  return '✓ ' + label;
              }
              return label;
          }
       },
-      suggestedMin: 0, // Minimum level for the scale
-      suggestedMax: 100, // Maximum level for the scale
+      suggestedMin: 0,
+      suggestedMax: 100,
       ticks: {
-          display: false, // Hide the numerical ticks on the scale
+          display: false,
           stepSize: 25,
-          color: '#777' // Color for ticks if displayed
+          color: '#777'
       }
     },
   },
   plugins: {
     legend: {
       labels: {
-        color: '#ccc', // Color for legend text
+        color: '#ccc',
       },
     },
     tooltip: {
-        // Customize tooltip to show verification status and attempt styling
         callbacks: {
-            label: function(context: TooltipItem<'radar'>) { // Type annotation
+            label: function(context: TooltipItem<'radar'>) {
                 let label = context.dataset.label || '';
                 if (label) {
                     label += ': ';
                 }
-                // Safely access skill name from labels array
                 const skillName = context.chart.data.labels?.[context.dataIndex] as string;
                 const skill = allSkills.find(s => s.name === skillName);
 
-                label += context.raw + '%'; // Display level as percentage in tooltip
+                label += context.raw + '%';
 
                 if (skill?.certified) {
-                    label += ' (Verified)'; // Add Verified status to tooltip
+                    label += ' (Verified)';
                 }
                 return label;
             },
-             // Attempt to set tooltip label text color - 'orange' for verified
-             // Using TooltipItem type for context
-            labelTextColor: function(context: TooltipItem<'radar'>) { // Type annotation
-                 // Safely access skill name
+            labelTextColor: function(context: TooltipItem<'radar'>) {
                  const skillName = context.chart.data.labels?.[context.dataIndex] as string;
                  const skill = allSkills.find(s => s.name === skillName);
-                 return skill?.certified ? 'orange' : context.dataset.borderColor as string; // Use orange for verified text, dataset border color otherwise
+                 return skill?.certified ? 'rgba(34, 197, 94, 1)' : context.dataset.borderColor as string;
             },
-            // Removed invalid titleColor callback as it's not a valid option
         }
     }
   },
@@ -224,46 +200,34 @@ const options: ChartOptions<'radar'> = {
 
 
 export default function Skills() {
-  // State and effect for scroll visibility animation
   const [isVisible, setIsVisible] = useState(false);
-   // Set chart height (adjust as needed) - Important for maintainAspectRatio: false
-   // Increased chart height for more space
-   const chartHeight = 600; // Increased height
+   const chartHeight = 600;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Optional: Disconnect observer if you only want the animation once
-          // observer.disconnect();
-        } else {
-           // Optional: Reset state to replay animation when scrolling back
-           // setIsVisible(false);
         }
       },
-      { threshold: 0.1 } // Trigger when 10% of the section is visible
+      { threshold: 0.1 }
     );
 
-    // Ensure this ID is on the div containing the chart
     const element = document.getElementById('skills-radar-section');
     if (element) observer.observe(element);
 
-    // Cleanup function to unobserve when the component unmounts
     return () => {
         if (element) observer.unobserve(element);
     };
-  }, []); // Empty dependency array means this effect runs once on mount and cleans up on unmount
-
+  }, []);
 
   return (
-    <section id="skills" className="py-24 bg-navy-primary"> {/* Ensure this ID matches your navigation if applicable */}
+    <section id="skills" className="py-24 bg-navy-primary">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-12 text-green-500">
           Skills Proficiency (Radar Chart)
         </h2>
 
-        {/* --- Radar Chart Section --- */}
         <div
           id="skills-radar-section"
           className={`w-full max-w-6xl mx-auto ${
@@ -273,11 +237,6 @@ export default function Skills() {
           <Radar data={data} options={options} height={chartHeight} />
         </div>
 
-
-          {/* --- Optional: Text list of skills below the chart ---
-          // Modified to remove percentage and use a better checkmark for verified skills.
-          // Keep or remove this section as desired.
-        */}
          <div className="w-full max-w-6xl mx-auto mt-12">
            <h3 className="text-2xl font-semibold text-green-500 mb-8 text-center">
              Skill Details
@@ -297,21 +256,19 @@ export default function Skills() {
                                  <span className="text-slate-lightest">
                                      {skill.name}
                                  </span>
-                                 <div className="flex items-center"> {/* Container for icons */}
-                                     {/* Removed percentage display */}
+                                 <div className="flex items-center">
                                      {skill.certified && (
-                                        <span className="text-green-500 ml-2">
+                                        <span className="ml-2" style={{ color: 'green' }}> {/* Corrected inline style */}
                                           <MuiTooltip title="Verified Skill">
-                                            <CheckCircle size={20} className="text-green-500" />
+                                            <CheckCircle size={20} className="text-current" />
                                           </MuiTooltip>
                                         </span>
                                       )}
                                  </div>
-                             </li> 
-
+                             </li>
                          ))}
                      </ul>
-                   </div> 
+                   </div>
                ))}
            </div>
          </div>
@@ -319,4 +276,3 @@ export default function Skills() {
     </section>
   );
 }
-                                  
