@@ -15,7 +15,7 @@
   },
   "firestore": {
     "rules": "firestore.rules",
-    "database": "portfolio"
+    "database": "portfoliodb"
   },
   "functions": {
     "source": "functions",

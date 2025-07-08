@@ -27,34 +27,34 @@ export default function SignUp() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-navy-primary text-slate-lightest">
-      <div className="w-full max-w-md p-6 space-y-4 rounded shadow bg-navy-light">
+    <div className="flex items-center justify-center min-h-screen bg-background text-text">
+      <div className="w-full max-w-md p-6 space-y-4 rounded shadow bg-primary">
         <h1 className="text-2xl font-bold">Sign Up</h1>
         {error && <p className="text-red-500">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block mb-1 text-slate-light" htmlFor="email">
+            <label className="block mb-1" htmlFor="email">
               Email
             </label>
             <input
               id="email"
               type="email"
               required
-              className="w-full px-3 py-2 border rounded bg-navy-primary text-slate-light focus:outline-none focus:border-green border-slate"
+              className="w-full px-3 py-2 border rounded bg-background text-text focus:outline-none focus:border-accent border-text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
           <div>
-            <label className="block mb-1 text-slate-light" htmlFor="password">
+            <label className="block mb-1" htmlFor="password">
               Password
             </label>
             <input
               id="password"
               type="password"
               required
-              className="w-full px-3 py-2 border rounded bg-navy-primary text-slate-light focus:outline-none focus:border-green border-slate"
+              className="w-full px-3 py-2 border rounded bg-background text-text focus:outline-none focus:border-accent border-text"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -63,7 +63,7 @@ export default function SignUp() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-4 py-2 font-semibold border rounded text-green border-green hover:bg-green hover:text-navy-primary disabled:opacity-50"
+            className="w-full px-4 py-2 font-semibold border rounded text-accent border-accent hover:bg-accent hover:text-background disabled:opacity-50"
           >
             {loading ? 'Creating Account...' : 'Create Account'}
           </button>

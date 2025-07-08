@@ -1,24 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
+/*
+  1. Use CSS custom properties for a consistent and maintainable theme.
+     This makes it easy to manage colors, fonts, and spacing across your project
+     and simplifies implementing features like a dark mode.
+*/
 :root {
-  color-scheme: light dark;
+  --color-text: hsl(210 10% 23%);
+  --color-background: hsl(0 0% 100%);
+  --color-primary: hsl(221 83% 53%);
+  --color-accent: hsl(212 92% 45%);
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+  color-scheme: light;
 }
 
+/* 2. Define dark mode colors. They will be applied when the .dark class is present on the html or body tag. */
+.dark {
+  --color-text: hsl(210 40% 96%);
+  --color-background: hsl(222 47% 11%);
+  --color-primary: hsl(217 91% 60%);
+  --color-accent: hsl(212 92% 45%);
+
+  color-scheme: dark;
+}
+
+/* 3. Apply smooth scrolling for anchor links. */
 html {
   scroll-behavior: smooth;
 }
 
+/* 4. Set base styles for the body for a clean, modern look. */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background-color: var(--color-background);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.dark {
-  color-scheme: dark;
+/* 5. Add a subtle fade-in animation for a more polished user experience. */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  animation: fadeIn 0.5s ease-in-out;
 }

@@ -51,7 +51,7 @@ export default function Contact() {
     <section id="contact" className="py-24">
       <h2 className="section-heading">Get In Touch</h2>
       <div className="max-w-2xl mx-auto mb-12 text-center">
-        <p className="text-lg text-[var(--slate)]">
+        <p className="text-lg text-text">
           I'm currently looking for new opportunities. Whether you have a
           question or just want to say hi, I'll try my best to get back to you!
         </p>
@@ -61,7 +61,7 @@ export default function Contact() {
           <div>
             <label
               htmlFor="firstName"
-              className="block text-[var(--light-slate)] mb-2"
+              className="block mb-2 text-text"
             >
               First Name
             </label>
@@ -70,14 +70,14 @@ export default function Contact() {
               id="firstName"
               value={formData.firstName}
               onChange={handleChange}
-              className="w-full bg-[var(--navy-light)] border border-[var(--navy-lightest)] rounded px-4 py-2 text-[var(--light-slate)] focus:outline-none focus:border-[var(--green)]"
+              className="w-full px-4 py-2 border rounded bg-primary border-text text-text focus:outline-none focus:border-accent"
               required
             />
           </div>
           <div>
             <label
               htmlFor="lastName"
-              className="block text-[var(--light-slate)] mb-2"
+              className="block mb-2 text-text"
             >
               Last Name
             </label>
@@ -86,7 +86,7 @@ export default function Contact() {
               id="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              className="w-full bg-[var(--navy-light)] border border-[var(--navy-lightest)] rounded px-4 py-2 text-[var(--light-slate)] focus:outline-none focus:border-[var(--green)]"
+              className="w-full px-4 py-2 border rounded bg-primary border-text text-text focus:outline-none focus:border-accent"
               required
             />
           </div>
@@ -94,7 +94,7 @@ export default function Contact() {
         <div>
           <label
             htmlFor="email"
-            className="block text-[var(--light-slate)] mb-2"
+            className="block mb-2 text-text"
           >
             Email
           </label>
@@ -103,14 +103,14 @@ export default function Contact() {
             id="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full bg-[var(--navy-light)] border border-[var(--navy-lightest)] rounded px-4 py-2 text-[var(--light-slate)] focus:outline-none focus:border-[var(--green)]"
+            className="w-full px-4 py-2 border rounded bg-primary border-text text-text focus:outline-none focus:border-accent"
             required
           />
         </div>
         <div>
           <label
             htmlFor="message"
-            className="block text-[var(--light-slate)] mb-2"
+            className="block mb-2 text-text"
           >
             Message
           </label>
@@ -119,7 +119,7 @@ export default function Contact() {
             value={formData.message}
             onChange={handleChange}
             rows={5}
-            className="w-full bg-[var(--navy-light)] border border-[var(--navy-lightest)] rounded px-4 py-2 text-[var(--light-slate)] focus:outline-none focus:border-[var(--green)]"
+            className="w-full px-4 py-2 border rounded bg-primary border-text text-text focus:outline-none focus:border-accent"
             required
           ></textarea>
         </div>
@@ -132,7 +132,7 @@ export default function Contact() {
           {isSubmitting ? 'Sending...' : 'Send Message'}
         </button>
         {responseMessage && (
-          <p className="mt-4 text-center text-[var(--green)]">
+          <p className="mt-4 text-center text-accent">
             {responseMessage}
           </p>
         )}

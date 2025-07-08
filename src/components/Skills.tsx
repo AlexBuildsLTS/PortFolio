@@ -137,13 +137,13 @@ const options: ChartOptions<'radar'> = {
   scales: {
     r: {
       angleLines: {
-        color: '#444',
+        color: 'hsl(var(--color-text) / 0.5)',
       },
       grid: {
-        color: '#444',
+        color: 'hsl(var(--color-text) / 0.5)',
       },
       pointLabels: {
-        color: '#ccc',
+        color: 'hsl(var(--color-text))',
         font: {
             size: 12,
         },
@@ -161,14 +161,14 @@ const options: ChartOptions<'radar'> = {
       ticks: {
           display: false,
           stepSize: 25,
-          color: '#777'
+          color: 'hsl(var(--color-text) / 0.8)'
       }
     },
   },
   plugins: {
     legend: {
       labels: {
-        color: '#ccc',
+        color: 'hsl(var(--color-text))',
       },
     },
     tooltip: {
@@ -222,9 +222,9 @@ export default function Skills() {
   }, []);
 
   return (
-    <section id="skills" className="py-24 bg-navy-primary">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12 text-green-500">
+    <section id="skills" className="py-24 bg-background">
+      <div className="container px-4 mx-auto">
+        <h2 className="mb-12 text-3xl font-bold text-center text-accent">
           Skills Proficiency (Radar Chart)
         </h2>
 
@@ -238,27 +238,27 @@ export default function Skills() {
         </div>
 
          <div className="w-full max-w-6xl mx-auto mt-12">
-           <h3 className="text-2xl font-semibold text-green-500 mb-8 text-center">
+           <h3 className="mb-8 text-2xl font-semibold text-center text-accent">
              Skill Details
            </h3>
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 ">
                {categorizedSkills.map(cat => (
                    <div
                      key={cat.category}
-                     className="bg-navy-light p-6 rounded-lg shadow-md hover:shadow-green-500/20 transition-shadow"
+                     className="p-6 transition-shadow rounded-lg shadow-md bg-primary hover:shadow-accent/20"
                    >
-                     <h4 className="text-xl font-medium text-green-500 mb-4 pb-2 border-b border-gray-700">
+                     <h4 className="pb-2 mb-4 text-xl font-medium border-b border-gray-700 text-accent">
                        {cat.category}
                      </h4>
                      <ul className="space-y-3">
                          {cat.skills.map(skill => (
-                             <li key={skill.name} className="flex justify-between items-center">
-                                 <span className="text-slate-lightest">
+                             <li key={skill.name} className="flex items-center justify-between">
+                                 <span className="text-text">
                                      {skill.name}
                                  </span>
                                  <div className="flex items-center">
                                      {skill.certified && (
-                                        <span className="ml-2" style={{ color: 'green' }}> {/* Corrected inline style */}
+                                        <span className="ml-2 text-accent">
                                           <MuiTooltip title="Verified Skill">
                                             <CheckCircle size={20} className="text-current" />
                                           </MuiTooltip>

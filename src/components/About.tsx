@@ -36,23 +36,23 @@ const About = () => {
         </p>
         {/* Updated Grid Section */}
         <div className="grid grid-cols-2 gap-4 mt-8 md:grid-cols-3">
-          <div className="flex items-center gap-3 text-green">
+          <div className="flex items-center gap-3 text-accent">
             <Icons.Code2 size={20} />
             <span>Frontend</span>
           </div>
-          <div className="flex items-center gap-3 text-green">
+          <div className="flex items-center gap-3 text-accent">
             <Icons.Layout size={20} />
             <span>UI/UX</span>
           </div>
-          <div className="flex items-center gap-3 text-green">
+          <div className="flex items-center gap-3 text-accent">
             <Icons.ShieldCheck size={20} />
             <span>Security</span>
           </div>
-          <div className="flex items-center gap-3 text-green">
+          <div className="flex items-center gap-3 text-accent">
             <Icons.Database size={20} />
             <span>Database</span>
           </div>
-          <div className="flex items-center gap-3 text-green">
+          <div className="flex items-center gap-3 text-accent">
             <Icons.MessageCircleCodeIcon size={20} />
             <span>Backend</span>
           </div>

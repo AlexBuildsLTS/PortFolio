@@ -5,15 +5,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        'navy-primary': '#0a192f',
-        'navy-light': '#112240',
-        'navy-lightest': '#233554',
-        'slate': '#8892b0',
-        'slate-light': '#a8b2d1',
-        'slate-lightest': '#ccd6f6',
+        // Updated to use CSS variables for theme-awareness
+        background: 'hsl(var(--color-background) / <alpha-value>)',
+        text: 'hsl(var(--color-text) / <alpha-value>)',
+        primary: 'hsl(var(--color-primary) / <alpha-value>)',
+        accent: 'hsl(var(--color-accent) / <alpha-value>)',
+
+        // You can retain specific, non-thematic colors if needed,
+        // but the primary theme colors should rely on the CSS variables.
+        'navy-primary': '#0a192f', // Example: might be used for specific dark elements
         'green': '#64ffda',
-        'blue-accent': '#2453DA',
-        'white': '#ffffff',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',

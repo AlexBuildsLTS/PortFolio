@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
     <nav
       className={`fixed top-0 z-50 w-full px-6 py-4 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/90 dark:bg-navy-primary/90 backdrop-blur-sm shadow-lg'
+          ? 'bg-background/90 backdrop-blur-sm shadow-lg'
           : 'bg-transparent'
       } lg:px-24`}
     >
@@ -90,7 +90,7 @@ const Navbar: React.FC = () => {
             href="https://github.com/AlexBuildsLTS"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors duration-300 text-green hover:text-slate-lightest"
+            className="transition-colors duration-300 text-accent hover:text-text"
             aria-label="GitHub Profile"
           >
             <Github size={24} />
@@ -99,14 +99,14 @@ const Navbar: React.FC = () => {
             href="https://www.linkedin.com/in/alex-youssef-02512a335/"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors duration-300 text-green hover:text-slate-lightest"
+            className="transition-colors duration-300 text-accent hover:text-text"
             aria-label="LinkedIn Profile"
           >
             <Linkedin size={24} />
           </a>
           <RouterLink
             to="/calendar"
-            className="p-2 transition-colors duration-300 text-green hover:text-slate-lightest"
+            className="p-2 transition-colors duration-300 text-accent hover:text-text"
           >
             <Calendar size={24} />
           </RouterLink>
@@ -130,7 +130,7 @@ const Navbar: React.FC = () => {
         </div>
 
         <button
-          className="transition-colors duration-300 text-green md:hidden"
+          className="transition-colors duration-300 text-accent md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -138,16 +138,34 @@ const Navbar: React.FC = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute left-0 w-full py-4 md:hidden top-full bg-white/90 dark:bg-navy-light/90 backdrop-blur-sm animate-fade-in">
+        <div className="absolute left-0 z-50 w-full py-4 md:hidden top-full bg-background/90 backdrop-blur-sm animate-fade-in">
           {navItems.map((item) => (
             <a
               key={item.label}
               onClick={() => handleNavClick(item.to)}
-              className="block px-6 py-2 cursor-pointer nav-link"
+              className="block px-6 py-4 text-lg cursor-pointer nav-link"
             >
               {item.label}
             </a>
           ))}
+          <div className="flex flex-col gap-2 px-6 mt-4">
+            {currentUser ? (
+              <button
+                onClick={logout}
+                className="flex items-center w-full gap-2 px-4 py-2 text-sm font-semibold btn-primary"
+              >
+                <LogOut size={16} />
+                <span>Log Out</span>
+              </button>
+            ) : (
+              <RouterLink
+                to="/login"
+                className="w-full px-4 py-2 text-sm font-semibold text-center btn-primary"
+              >
+                <span>Log In</span>
+              </RouterLink>
+            )}
+          </div>
         </div>
       )}
     </nav>

@@ -68,7 +68,7 @@ const Projects: React.FC = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="overflow-hidden transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl bg-navy-light"
+            className="overflow-hidden transition-all duration-300 rounded-lg shadow-lg hover:shadow-xl bg-primary"
           >
             <div className="relative overflow-hidden group">
               <img
@@ -78,15 +78,15 @@ const Projects: React.FC = () => {
               />
             </div>
             <div className="p-6">
-              <h3 className="mb-2 text-xl font-bold text-slate-lightest">
+              <h3 className="mb-2 text-xl font-bold text-text">
                 {project.title}
               </h3>
-              <p className="mb-4 text-slate">{project.description}</p>
+              <p className="mb-4 text-text">{project.description}</p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.technologies.map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="px-3 py-1 text-sm rounded-full bg-navy-primary text-green"
+                    className="px-3 py-1 text-sm rounded-full bg-background text-accent"
                   >
                     {tech}
                   </span>
@@ -97,7 +97,7 @@ const Projects: React.FC = () => {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-green hover:text-slate-lightest"
+                  className="flex items-center gap-2 text-accent hover:text-text"
                 >
                   <Github size={20} />
                   <span>Code</span>
@@ -107,7 +107,7 @@ const Projects: React.FC = () => {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-green hover:text-slate-lightest"
+                    className="flex items-center gap-2 text-accent hover:text-text"
                   >
                     <ExternalLink size={20} />
                     <span>Live Demo</span>
