@@ -12,5 +12,13 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "database": "portfolio"
+  },
+  "functions": {
+    "source": "functions",
+    "runtime": "nodejs22"
   }
 }

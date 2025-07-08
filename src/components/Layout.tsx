@@ -8,11 +8,10 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  // Use the ThemeContext to access darkMode
   const { darkMode } = useTheme();
 
   return (
-    <div className={darkMode ? 'dark' : ''}>
+    <div className={`${darkMode ? 'dark bg-navy-primary' : 'bg-white'} text-slate`}>
       <Navbar />
       <main className="px-6 pt-20 lg:px-24">{children}</main>
       <Footer />

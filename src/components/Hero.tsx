@@ -4,7 +4,7 @@ import Resume from "../assets/Resume.pdf";
 export default function Hero()
 {
   return (
-    <section className="flex items-center min-h-screen px-6 bg-navy-primary text-slate-lightest sm:px-12">
+    <section id="home" className="flex items-center min-h-screen px-6 bg-navy-primary text-slate-lightest sm:px-12">
       <div className="max-w-4xl mx-auto animate-slide-up">
         <h1 className="mb-4 text-2xl font-bold text-green sm:text-4xl">
           Hi, my name is
@@ -24,10 +24,10 @@ export default function Hero()
         <a href="#projects" className="btn-primary">
           Check out my work
         </a>
-        <a href={Alex_Youssef_Java_Certificate} download="Alex_Youssef_Java_Certificate.pdf" className="btn-primary ml-4">
+        <a href={Alex_Youssef_Java_Certificate} download="Alex_Youssef_Java_Certificate.pdf" className="ml-4 btn-primary">
           Java Fullstack-Certificate
         </a>
-        <a href={Resume} download="Alex_Youssef_Resume.pdf" className="btn-primary ml-4">
+        <a href={Resume} download="Alex_Youssef_Resume.pdf" className="ml-4 btn-primary">
           CV
         </a>
       </div>

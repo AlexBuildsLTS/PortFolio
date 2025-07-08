@@ -1,23 +1,36 @@
 import React, { useState } from 'react';
-import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 export default function Login() {
-  const { login } = useAuth(); // Access the login function from AuthContext
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Use the login function from AuthContext
-    login(email);
-    console.log('Logged in with:', { email, password });
+    setLoading(true);
+    setError('');
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/calendar'); // Redirect to calendar on successful login
+    } catch (err) {
+      setError('Failed to log in. Please check your credentials.');
+      console.error(err);
+    }
+
+    setLoading(false);
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-navy-primary text-slate-lightest">
-      <div className="w-full max-w-md p-6 space-y-4 bg-navy-light rounded shadow">
+      <div className="w-full max-w-md p-6 space-y-4 rounded shadow bg-navy-light">
         <h1 className="text-2xl font-bold">Login</h1>
-
+        {error && <p className="text-red-500">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block mb-1 text-slate-light" htmlFor="email">
@@ -27,7 +40,7 @@ export default function Login() {
               id="email"
               type="email"
               required
-              className="w-full px-3 py-2 rounded bg-navy-primary text-slate-light focus:outline-none focus:border-green border border-slate"
+              className="w-full px-3 py-2 border rounded bg-navy-primary text-slate-light focus:outline-none focus:border-green border-slate"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -41,7 +54,7 @@ export default function Login() {
               id="password"
               type="password"
               required
-              className="w-full px-3 py-2 rounded bg-navy-primary text-slate-light focus:outline-none focus:border-green border border-slate"
+              className="w-full px-3 py-2 border rounded bg-navy-primary text-slate-light focus:outline-none focus:border-green border-slate"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -49,18 +62,12 @@ export default function Login() {
 
           <button
             type="submit"
-            className="px-4 py-2 font-semibold text-green border border-green rounded hover:bg-green hover:text-navy-primary"
+            disabled={loading}
+            className="w-full px-4 py-2 font-semibold border rounded text-green border-green hover:bg-green hover:text-navy-primary disabled:opacity-50"
           >
-            Log In
+            {loading ? 'Logging In...' : 'Log In'}
           </button>
         </form>
-
-        <p className="text-sm text-slate">
-          Don&apos;t have an account?{' '}
-          <a href="/signup" className="text-green hover:text-slate-lightest">
-            Sign up
-          </a>
-        </p>
       </div>
     </div>
   );

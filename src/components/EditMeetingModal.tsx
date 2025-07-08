@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
-import { Meeting } from '../types/Meeting'; // Use imported Meeting interface
+import { Meeting } from '../types/Meeting';
 
 interface EditMeetingModalProps {
-  meeting: Meeting;
+  meeting: Meeting | null;
   isOpen: boolean;
   onClose: () => void;
-  onSave: (updatedMeeting: Meeting) => void;
+  onSave: (meetingData: Omit<Meeting, 'id' | 'creatorEmail'>) => void;
 }
 
 const EditMeetingModal: React.FC<EditMeetingModalProps> = ({
@@ -16,51 +16,42 @@ const EditMeetingModal: React.FC<EditMeetingModalProps> = ({
   onSave,
 }) => {
   const { darkMode } = useTheme();
-  const [title, setTitle] = useState(meeting.title);
-  const [date, setDate] = useState(meeting.date);
-  const [time, setTime] = useState(meeting.time);
-  const [level, setLevel] = useState(meeting.level);
-  const [participants, setParticipants] = useState(meeting.participants);
-  const [description, setDescription] = useState(meeting.description);
+  const [title, setTitle] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [level, setLevel] = useState('Team');
+  const [participants, setParticipants] = useState(['']);
+  const [description, setDescription] = useState('');
   const [error, setError] = useState('');
 
   useEffect(() => {
     if (isOpen) {
-      setTitle(meeting.title);
-      setDate(meeting.date);
-      setTime(meeting.time);
-      setLevel(meeting.level);
-      setParticipants(meeting.participants);
-      setDescription(meeting.description);
+      if (meeting) {
+        setTitle(meeting.title);
+        setDate(meeting.date);
+        setTime(meeting.time);
+        setLevel(meeting.level);
+        setParticipants(meeting.participants);
+        setDescription(meeting.description);
+      } else {
+        setTitle('');
+        setDate('');
+        setTime('');
+        setLevel('Team');
+        setParticipants(['']);
+        setDescription('');
+      }
       setError('');
     }
   }, [isOpen, meeting]);
 
   const handleSave = () => {
-    if (
-      !title ||
-      !date ||
-      !time ||
-      !level ||
-      !description ||
-      participants.some((p) => !p)
-    ) {
+    if (!title || !date || !time || !level || !description || participants.some((p) => !p)) {
       setError('All fields are required.');
       return;
     }
 
-    const updatedMeeting: Meeting = {
-      ...meeting, // Ensure existing properties like `id` and `creatorEmail` are retained
-      title,
-      date,
-      time,
-      level,
-      participants,
-      description,
-    };
-
-    onSave(updatedMeeting);
-    onClose();
+    onSave({ title, date, time, level, participants, description });
   };
 
   if (!isOpen) return null;
@@ -76,56 +67,94 @@ const EditMeetingModal: React.FC<EditMeetingModalProps> = ({
           darkMode ? 'bg-gray-800' : 'bg-white'
         }`}
       >
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute text-2xl top-4 right-4"
+        >
+          ×
+        </button>
         <h2
           className={`mb-4 text-2xl font-semibold ${
             darkMode ? 'text-white' : 'text-black'
           }`}
         >
-          Edit Meeting
+          {meeting ? 'Edit Meeting' : 'Create Meeting'}
         </h2>
         {error && <p className="text-red-500">{error}</p>}
         <form className="space-y-4">
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Title"
-            className={`w-full p-2 border rounded ${
-              darkMode
-                ? 'border-gray-600 bg-gray-700 text-white'
-                : 'border-gray-300 bg-white text-black'
-            }`}
-          />
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className={`w-full p-2 border rounded ${
-              darkMode
-                ? 'border-gray-600 bg-gray-700 text-white'
-                : 'border-gray-300 bg-white text-black'
-            }`}
-          />
-          <input
-            type="time"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-            className={`w-full p-2 border rounded ${
-              darkMode
-                ? 'border-gray-600 bg-gray-700 text-white'
-                : 'border-gray-300 bg-white text-black'
-            }`}
-          />
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Description"
-            className={`w-full p-2 border rounded ${
-              darkMode
-                ? 'border-gray-600 bg-gray-700 text-white'
-                : 'border-gray-300 bg-white text-black'
-            }`}
-          />
+          <div>
+            <label htmlFor="title" className={`block mb-1 ${darkMode ? 'text-white' : 'text-black'}`}>Title</label>
+            <input
+              id="title"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Title"
+              className={`w-full p-2 border rounded ${
+                darkMode
+                  ? 'border-gray-600 bg-gray-700 text-white'
+                  : 'border-gray-300 bg-white text-black'
+              }`}
+            />
+          </div>
+          <div>
+            <label htmlFor="date" className={`block mb-1 ${darkMode ? 'text-white' : 'text-black'}`}>Date</label>
+            <input
+              id="date"
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className={`w-full p-2 border rounded ${
+                darkMode
+                  ? 'border-gray-600 bg-gray-700 text-white'
+                  : 'border-gray-300 bg-white text-black'
+              }`}
+            />
+          </div>
+          <div>
+            <label htmlFor="time" className={`block mb-1 ${darkMode ? 'text-white' : 'text-black'}`}>Time</label>
+            <input
+              id="time"
+              type="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+              className={`w-full p-2 border rounded ${
+                darkMode
+                  ? 'border-gray-600 bg-gray-700 text-white'
+                  : 'border-gray-300 bg-white text-black'
+              }`}
+            />
+          </div>
+          <div>
+            <label htmlFor="participants" className={`block mb-1 ${darkMode ? 'text-white' : 'text-black'}`}>Participants (comma-separated)</label>
+            <input
+              id="participants"
+              type="text"
+              value={participants.join(', ')}
+              onChange={(e) => setParticipants(e.target.value.split(',').map(p => p.trim()))}
+              placeholder="user1@example.com, user2@example.com"
+              className={`w-full p-2 border rounded ${
+                darkMode
+                  ? 'border-gray-600 bg-gray-700 text-white'
+                  : 'border-gray-300 bg-white text-black'
+              }`}
+            />
+          </div>
+          <div>
+            <label htmlFor="description" className={`block mb-1 ${darkMode ? 'text-white' : 'text-black'}`}>Description</label>
+            <textarea
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Description"
+              className={`w-full p-2 border rounded ${
+                darkMode
+                  ? 'border-gray-600 bg-gray-700 text-white'
+                  : 'border-gray-300 bg-white text-black'
+              }`}
+            />
+          </div>
           <button
             type="button"
             onClick={handleSave}

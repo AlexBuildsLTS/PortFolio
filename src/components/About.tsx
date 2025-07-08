@@ -3,7 +3,7 @@ import neoFetchImage from '../assets/neo-fetch.png';
 
 const About = () => {
   return (
-    <section>
+    <section id="about">
       <div className="space-y-6">
         <p className="text-lg">
           Hello! I'm Alex Youssef, a dedicated Java Fullstack Developer
@@ -59,12 +59,12 @@ const About = () => {
         </div>
 
         {/* Adjusted Image Section */}
-        <div className="relative group mt-12">
+        <div className="relative mt-12 group">
           <div className="relative z-10">
             <img
               src={neoFetchImage}
               alt="Neo Fetch"
-              className="w-auto max-w-4xl mx-auto h-auto transition-transform duration-300 rounded-lg shadow-lg group-hover:scale-105"
+              className="w-auto h-auto max-w-4xl mx-auto transition-transform duration-300 rounded-lg shadow-lg group-hover:scale-105"
             />
           </div>
         </div>
